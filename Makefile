@@ -5,7 +5,7 @@
 #  $Author: tanaka $
 #
 .PHONY: all strip clean depend
-GUROBI_ROOT = /opt/gurobi911/linux64
+GUROBI_ROOT = /opt/gurobi950/linux64
 GUROBI_LIBS = -lgurobi_g++5.2 -lgurobi91
 
 OBJS       = bay.o baystate.o greedy.o instance.o ipmodel.o main.o sequence.o \
