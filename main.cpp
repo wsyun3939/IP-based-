@@ -121,7 +121,7 @@ int main(const int argc, const char **argv)
   // FILE *fp_csv = NULL;
   for (int a = NUMBER; a < NUMBER + 100 * TIER; a++)
   {
-    sprintf(filename, "../Block Relocation Problem/Benchmark/%d-%d-%d/%05d.txt", TIER, STACK, nblock, a);
+    sprintf(filename, "../distinctive-double--1/Benchmark/%d-%d-%d/%05d.txt", TIER, STACK, nblock, a);
     printf("%s\n", filename);
 
     ifs.open(filename, std::ios::in);
