@@ -41,6 +41,12 @@
 #include "parameter.hpp"
 #include "solve.hpp"
 
+#define BUFFER 256
+#define TIER 3
+#define STACK 6
+#define NBLOCK 15
+#define NUMBER 1
+
 namespace po = boost::program_options;
 
 int main(const int argc, const char **argv)
@@ -120,8 +126,15 @@ int main(const int argc, const char **argv)
     }
   }
 
-  Instance instance;
+  int nblock = NBLOCK;
+  int k = 0;
+  // FILE *fp_csv = NULL;
+  for (int a = NUMBER; a < NUMBER + 100 * TIER; a++)
+  {
+    sprintf(pfs, "../Block Relocation Problem/Benchmark/%d-%d-%d/%05d.txt", TIER, STACK, nblock, a);
+    printf("%s\n", filename);
 
+  Instance instance;
   try {
     instance.read(*pfs);
 
@@ -143,13 +156,25 @@ int main(const int argc, const char **argv)
       std::cerr << instance << std::endl;
     }
 	
-    solve(instance, parameter);
-
-    return EXIT_SUCCESS;
+    k+=solve(instance, parameter);
+  // if (a % 100 == 1)
+    // {
+    //   sprintf(filename, "C:/Users/wsyun/Desktop/Thesis/Block Relocation Problem/alpha=%.1f/%d-%d-%d(eihter).csv", ALPHA, TIER, STACK, nblock);
+    //   fp_csv = fopen(filename, "w");
+    // }
+    // fprintf(fp_csv, "%d\n", solution->n_relocation);
+  if (a % 100 == 0)
+    {
+      nblock++;
+      // fclose(fp_csv);
+    }
+  
   } catch(const char *c) {
     std::cerr << c << std::endl;
     return EXIT_FAILURE;
   } catch(...) {
     return EXIT_FAILURE;
-  }
+  }}
+    printf("ave_relocation:%f\n", (double)k / (100 * TIER));
+
 }

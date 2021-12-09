@@ -78,7 +78,7 @@ int solve(const Instance& instance, const Parameter& parameter)
     try {
       Solution* sol = m.best_solution();
       sol->print(std::cout, instance);
-      return EXIT_SUCCESS;
+      return m.lower_bound();
     } catch(const char *e) {
       std::cerr << e << std::endl;
     }
