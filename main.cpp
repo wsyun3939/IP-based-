@@ -115,24 +115,18 @@ int main(const int argc, const char **argv)
   std::istream *pfs = &std::cin;
   std::ifstream ifs;
 
-  if(vm.count("input-file")) {
-    ifs.open(vm["input-file"].as< std::string >().c_str(), std::ios::in);
-    if(ifs.fail()) {
-      std::cerr << "Cannot open file:"
-		<< vm["input-file"].as< std::string >().c_str() << std::endl;
-      return EXIT_FAILURE;
-    } else {
-      pfs = &ifs;
-    }
-  }
-
   int nblock = NBLOCK;
   int k = 0;
+  char filename[BUFFER];
   // FILE *fp_csv = NULL;
   for (int a = NUMBER; a < NUMBER + 100 * TIER; a++)
   {
-    sprintf(pfs, "../Block Relocation Problem/Benchmark/%d-%d-%d/%05d.txt", TIER, STACK, nblock, a);
+    sprintf(filename, "../Block Relocation Problem/Benchmark/%d-%d-%d/%05d.txt", TIER, STACK, nblock, a);
     printf("%s\n", filename);
+
+    ifs.open(filename, std::ios::in);
+    pfs = &ifs;
+
 
   Instance instance;
   try {
@@ -175,6 +169,6 @@ int main(const int argc, const char **argv)
   } catch(...) {
     return EXIT_FAILURE;
   }}
-    printf("ave_relocation:%f\n", (double)k / (100 * TIER));
+    printf("ave_relocation:%f\n", static_cast<double>(k) / (100 * TIER));
 
 }
