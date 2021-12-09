@@ -42,13 +42,11 @@
 int solve(const Instance& instance, const Parameter& parameter)
 {
   IPModel m(instance);
-
   if(m.solve(parameter)) {
     std::cerr << "solved" << std::endl;
   } else {
     std::cerr << "not solved" << std::endl;
   }
-
   std::cerr << "iterations=" << m.number_of_iterations() << std::endl;
   std::cerr << "total_time=" << m.total_time() << std::endl;
   if(parameter.upperBounding) {

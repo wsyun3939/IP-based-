@@ -61,7 +61,6 @@ bool IPModel::solve(const Parameter& parameter)
     std::cerr << e.getMessage() << std::endl;
     return false;
   }
-
   model = m;
   if(parameter.verbose < 2) {
     model->set(GRB_IntParam_OutputFlag, 0);

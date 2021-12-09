@@ -6,7 +6,7 @@
 #
 .PHONY: all strip clean depend
 GUROBI_ROOT = /opt/gurobi950/linux64
-GUROBI_LIBS = -lgurobi_g++5.2 -lgurobi91
+GUROBI_LIBS = -lgurobi_g++5.2 -lgurobi95
 
 OBJS       = bay.o baystate.o greedy.o instance.o ipmodel.o main.o sequence.o \
 	solve.o solution.o
@@ -51,22 +51,22 @@ depend:
 bay.o: bay.cpp bay.hpp instance.hpp
 baystate.o: baystate.cpp baystate.hpp bay.hpp instance.hpp
 greedy.o: greedy.cpp greedy.hpp bay.hpp instance.hpp solution.hpp \
- sequence.hpp /opt/gurobi911/linux64/include/gurobi_c++.h \
- /opt/gurobi911/linux64/include/gurobi_c.h baystate.hpp
+ sequence.hpp /opt/gurobi950/linux64/include/gurobi_c++.h \
+ /opt/gurobi950/linux64/include/gurobi_c.h baystate.hpp
 instance.o: instance.cpp instance.hpp
-ipmodel.o: ipmodel.cpp /opt/gurobi911/linux64/include/gurobi_c++.h \
- /opt/gurobi911/linux64/include/gurobi_c.h greedy.hpp bay.hpp \
+ipmodel.o: ipmodel.cpp /opt/gurobi950/linux64/include/gurobi_c++.h \
+ /opt/gurobi950/linux64/include/gurobi_c.h greedy.hpp bay.hpp \
  instance.hpp solution.hpp sequence.hpp baystate.hpp ipmodel.hpp \
  parameter.hpp
 main.o: main.cpp instance.hpp parameter.hpp solve.hpp
 sequence.o: sequence.cpp baystate.hpp bay.hpp instance.hpp sequence.hpp \
- /opt/gurobi911/linux64/include/gurobi_c++.h \
- /opt/gurobi911/linux64/include/gurobi_c.h
+ /opt/gurobi950/linux64/include/gurobi_c++.h \
+ /opt/gurobi950/linux64/include/gurobi_c.h
 solve.o: solve.cpp instance.hpp ipmodel.hpp \
- /opt/gurobi911/linux64/include/gurobi_c++.h \
- /opt/gurobi911/linux64/include/gurobi_c.h bay.hpp baystate.hpp \
+ /opt/gurobi950/linux64/include/gurobi_c++.h \
+ /opt/gurobi950/linux64/include/gurobi_c.h bay.hpp baystate.hpp \
  parameter.hpp sequence.hpp solution.hpp solve.hpp
 solution.o: solution.cpp solution.hpp bay.hpp instance.hpp sequence.hpp \
- /opt/gurobi911/linux64/include/gurobi_c++.h \
- /opt/gurobi911/linux64/include/gurobi_c.h baystate.hpp
+ /opt/gurobi950/linux64/include/gurobi_c++.h \
+ /opt/gurobi950/linux64/include/gurobi_c.h baystate.hpp
 # END

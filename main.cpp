@@ -142,7 +142,7 @@ int main(const int argc, const char **argv)
     if(parameter.verbose > 0) {
       std::cerr << instance << std::endl;
     }
-
+	
     solve(instance, parameter);
 
     return EXIT_SUCCESS;
